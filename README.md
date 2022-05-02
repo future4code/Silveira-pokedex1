@@ -14,3 +14,8 @@ O que funciona (Segunda Feira 02.05.2022):
 
 O que não funciona: 
 - Por enquanto está tudo ok.
+
+Fotos:
+![poke](https://user-images.githubusercontent.com/10249921/166310929-22cf46c7-8190-4bbc-90be-9353db96b947.png)
+
+
