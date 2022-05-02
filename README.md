@@ -5,7 +5,7 @@ Nome dos integrantes: -
 - Karen Naomi Cardoso Kubo
 - Maria Eduarda Lopes
 
-Link do Surge: [PokeCKM](pokeckm.surge.sh)
+Link do Surge: [PokeCKM](https://pokeckm.surge.sh/)
 
 O que funciona (Segunda Feira 02.05.2022):
 - Foi criado o postman com os endpoints que serão utilizados. Ele se encontra dentro da pasta postman.
