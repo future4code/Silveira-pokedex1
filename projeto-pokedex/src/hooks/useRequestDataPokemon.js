@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-export const useRequestData = (initialState, url) => {
+export const useRequestDataPokemon = (initialState, url) => {
   const [data, setData] = useState(initialState);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(undefined);
@@ -13,7 +13,7 @@ export const useRequestData = (initialState, url) => {
       .get(url)
       .then((res) => {
         setIsLoading(false);
-        setData(res.data.results);
+        setData(res.data);
       })
       .catch((err) => {
         setError(err);
@@ -22,7 +22,7 @@ export const useRequestData = (initialState, url) => {
   };
   useEffect(() => {
     getData();
-  }, [url]);
+  }, []);
 
-  return [data, isLoading, error];
+  return [data];
 };

@@ -2,7 +2,7 @@ export const goToHomePage = (navigate) => {
     navigate("/")
 }
 
-export const goToPokedexe = (navigate) => {
+export const goToPokedex = (navigate) => {
     navigate("/pokedex")
 }
 
