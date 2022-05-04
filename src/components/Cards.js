@@ -3,7 +3,7 @@ import axios from "axios";
 import styled from "styled-components";
 import { useNavigate } from 'react-router-dom';
 import { goToDetails, goToPokedex } from "../routes/coordinator";
-import GlobalStateContext from "../components/Contexts";
+import GlobalStateContext from "../global/GlobalStateContext"
 import { useContext } from "react";
 
 

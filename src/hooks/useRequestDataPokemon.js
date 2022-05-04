@@ -6,19 +6,26 @@ export const useRequestDataPokemon = (initialState, url) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(undefined);
 
-  const getData = () => {
+  const getData = async () => {
     setIsLoading(true);
     setError(undefined);
-    axios
-      .get(url)
-      .then((res) => {
-        setIsLoading(false);
-        setData(res.data);
-      })
-      .catch((err) => {
-        setError(err);
-        setIsLoading(false);
-      });
+    // axios
+    //   .get(url)
+    //   .then((res) => {
+    //     setIsLoading(false);
+    //     setData(res.data);
+    //   })
+    //   .catch((err) => {
+    //     setError(err);
+    //     setIsLoading(false);
+    //   });
+
+    try {
+      const res = await axios.get(url)
+      setData(res.data)
+    } catch (err) {
+      alert(`Ocorreu um problema, tente novamente - ${err}`)
+    }
   };
   useEffect(() => {
     getData();

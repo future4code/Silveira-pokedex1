@@ -7,11 +7,13 @@ import Cards from "./components/Cards";
 import Christian from "./img/foto1.png"
 import Karen from "./img/foto2.png";
 import Duda from "./img/foto3.png";
-import GlobalStateContext from "./components/Contexts";
+import GlobalStateContext from "./global/GlobalStateContext"
+import { GlobalState } from "./global/GlobalState";
 import { GlobalStyle, Header, Body, LogoHeader, Footer, DivFooter, ImagemFooter } from "./styleApp";
 import { useRequestData } from "./hooks/useRequestData";
 import { BASE_URL } from "./constants/Constants";
 import { useContext } from "react";
+import './Styles.css'
 
 
 // Para details: `url/${id}`
@@ -20,10 +22,10 @@ const App = () => {
   const pokemons = useRequestData([], `${BASE_URL}`);
 
   return (
-    <div>
+    <>
       <GlobalStyle />
 
-      <GlobalStateContext.Provider value={pokemons}>
+      <GlobalState>
 
         <Header>
           <LogoHeader src={Logo} alt="PokéCKM - Temos que programar" title="PokéCKM - Temos que programar" />
@@ -40,8 +42,8 @@ const App = () => {
           </DivFooter>
         </Footer>
 
-      </GlobalStateContext.Provider>
-    </div>
+      </GlobalState>
+    </>
   );
 }
 
