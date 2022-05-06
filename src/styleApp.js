@@ -34,10 +34,18 @@ export const Footer = styled.footer`
   display: flex;
   justify-content: space-around;
   align-items: center;
+  word-wrap: break-word;
+  h3 {
+    @media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    font-size: 12px;
+    word-wrap: break-word;
+  }
+}
 `
 export const DivFooter = styled.div `
   display: flex;
   column-gap: 20px;
+
 `
 export const ImagemFooter = styled.img`
   width: 50px;

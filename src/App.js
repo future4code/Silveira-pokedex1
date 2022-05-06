@@ -15,11 +15,9 @@ import { BASE_URL } from "./constants/Constants";
 import { useContext } from "react";
 import './Styles.css'
 
-
 // Para details: `url/${id}`
 
 const App = () => {
-  const pokemons = useRequestData([], `${BASE_URL}`);
 
   return (
     <>
@@ -34,7 +32,7 @@ const App = () => {
         <Router />
         </Body>
         <Footer>
-          <h3>Copyright, 2022. Developed by Christian Cardeal, Karen Kubo e Maria Eduarda Lopes.</h3>
+          <h3>Copyright, 2022. Desenvolvido por: Christian Cardeal, Karen Kubo e Maria Eduarda Lopes.</h3>
           <DivFooter>
             <a href="mailto:christian-cardeal@hotmail.com"><ImagemFooter src={Christian} alt="Link para e-mail - Christian" /></a>
             <a href="mailto:karennckubo@gmail.com"><ImagemFooter src={Karen} alt="Link para e-mail - Karen" /></a>

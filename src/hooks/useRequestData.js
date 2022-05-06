@@ -24,5 +24,5 @@ export const useRequestData = (initialState, url) => {
     getData();
   }, [url]);
 
-  return [data, isLoading, error];
+  return [data, setData, isLoading, error];
 };

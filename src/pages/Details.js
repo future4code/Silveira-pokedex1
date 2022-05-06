@@ -7,74 +7,102 @@ import { GlobalState } from '../global/GlobalState'
 import axios from 'axios';
 import { useRequestDataPokemon } from '../hooks/useRequestDataPokemon';
 import { goToHomePage } from '../routes/coordinator.js'
-// import Cards from '../components/Cards';
-import {  Button, TextoBotao1} from "../styles/HomePageStyle";
+import Cards from '../components/Cards';
+import { DivCards, PGreen, PRed, PBlue, Button, BoxInfoBlue, BoxInfoGreen, BoxInfoRed, TextoBotao1, H1, H3, P, Imagem, DivContain, DivHome} from "../styles/DetailsStyle";
+import {TextoBotao, Pokebola, DivButtonPokedex  }  from "../styles/HomePageStyle";
+import Poke_bola from "../img/pokebola.png"
+import Gif from "../img/gof.gif"
 
 const Details = (props) => {
   const params = useParams();
   const navigate = useNavigate();
-
   const [pokemonDetails] = useRequestDataPokemon({}, `${BASE_URL}${params.name}/`);
 
   const { states, setters } = useContext(GlobalStateContext);
-  const { details } = states;
-  const { setDetails } = setters;
+  const { details, pokemons, pokedex  } = states;
+  const { setDetails, setPokemons, setPokedex } = setters;
 
 
   const settingDetails = () => {
-    console.log(`Fui Chamado`)
     setDetails(pokemonDetails)
   }
   
   useEffect(() => {
      pokemonDetails.name && settingDetails();      
   }, [pokemonDetails])
-
-  console.log(`PokemonDetails:`, pokemonDetails)
-  console.log(`Detalhes:`, details)
-
   
     const abilitiesMap = details.name && details.abilities.map((pokemon) => {
       return (
-        <div key={pokemon.ability.name}>
-          <p> Abilities: {pokemon.ability.name} </p>
-        </div>
+          <PBlue><strong>{pokemon.ability.name.toUpperCase()} </strong></PBlue>
       )
     })
 
 
     const statsMap = details.name && details.stats.map((pokemon) => {
       return (
-        <div key={pokemon.stat.name}>
-          <p>Name: {pokemon.stat.name}</p>
-          <p>Value: {pokemon.base_stat}</p>
-        </div>
+        <>
+          <PGreen><strong>{pokemon.stat.name.toUpperCase()}: </strong></PGreen>
+          <PRed><strong>{pokemon.base_stat}</strong> </PRed>
+        </>
       )
     })
 
     const types = details.name && details.types.map((pokemon) => {
       return (
-        <div key={pokemon.type.name}>
-          <p>Type Name: {pokemon.type.name}</p>
-        </div>
+          <PRed><strong>Type Name:</strong> {pokemon.type.name}</PRed>
       )
     })
 
+    const addToPokedex = (poke) => {
+      const pokeIndex = pokemons.findIndex((pokemon) => {
+        return (
+          poke.name === pokemon.name
+        )
+      })
+      const newPokemons = [...pokemons]; // tirar
+      newPokemons.splice(pokeIndex, 1);
+      //sort
+      setPokemons(newPokemons);
+
+      const newPokedex = [...pokedex, poke];
+      
+      setPokedex(newPokedex);
+
+      alert(`${poke.name} foi adicionado a sua Pokedex`)
+
+    }
+
 
   return (
-    <div>
-      <div>
+    <DivContain>
+      <DivHome>
         <Button onClick={() => goToHomePage(navigate)}>HomePage</Button>
+      </DivHome>
+    <DivCards>
+      <div>
+      {details.name && <Imagem src={details.sprites.front_default} />}
+      {details.name && <Imagem src={details.sprites.back_default} />}
       </div>
-      {details.name && <img src={details.sprites.front_default} />}
-      {details.name && <img src={details.sprites.back_default} />}
-      {details && <p>{details.name}</p>}
-      {abilitiesMap}
+      {details && <H1>{details.name}</H1>}
+      <div>
+      <BoxInfoBlue>
+        <PBlue><strong>Abilities:</strong></PBlue>
+        {abilitiesMap}
+      </BoxInfoBlue>
+      <BoxInfoGreen>
       {statsMap}
+      </BoxInfoGreen>
+      <BoxInfoRed>
       {types}
-      <p>Height: {details && details.height}</p>
-      <p>Weight: {details && details.weight}</p>
-    </div>
+      <PRed><strong>Height:</strong> {details && details.height}</PRed>
+      <PRed><strong>Weight:</strong> {details && details.weight}</PRed>
+      </BoxInfoRed>
+      </div>
+      {/* <Button>Adicionar a Pokedex</Button> */}
+      <Button onClick={() => { addToPokedex(details) }}><TextoBotao>Adicionar a Pokedex</TextoBotao><Pokebola src={Poke_bola} alt="Pokebola" /></Button>
+
+    </DivCards>
+    </DivContain>
   )
 }
 

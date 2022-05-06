@@ -1,11 +1,13 @@
 import styled from 'styled-components';
+
+
 export const CardsList = styled.div`
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     row-gap: 50px;
     column-gap: 50px;
-    margin: 40px;
+    margin: 50px;
 `
 
 export const H1 = styled.h1`
@@ -18,7 +20,7 @@ export const H1 = styled.h1`
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
-
+    text-transform: uppercase;
     :hover { 
     background-color: green; 
 
@@ -33,15 +35,26 @@ export const H1 = styled.h1`
 export const DivCards = styled.div`
   box-shadow: rgb(85, 91, 255) 0px 0px 0px 3px, rgb(31, 193, 27) 0px 0px 0px 6px, rgb(255, 217, 19) 0px 0px 0px 9px, rgb(255, 156, 85) 0px 0px 0px 12px, rgb(255, 85, 85) 0px 0px 0px 15px;
   border-radius: 5px;
-  min-height:50vh;
-  width: 250px;
+  background-color: #FEF0DB;
+  min-height: 55vh;
+  width:  600px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  align-items: center;
+  span, p {
+    text-align: center;
+  }
+
+  @media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    font-size: 12px;
+    width:  320px;
+}
 `  
+
 export const Imagem = styled.img `
-    height: 15vw;
-    object-fit: contain;
+    width: 200px;
+    object-fit: contaIn;
     -webkit-transition: -webkit-transform .5s ease;
    transition: transform .5s ease;
    :hover {
@@ -68,11 +81,8 @@ export const Button = styled.button`
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  align-self: center;
   margin-bottom: 8px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
   :hover {
   background-color: lightpink ;
   box-shadow: #FF6314 0 -6px 8px inset;
@@ -100,7 +110,6 @@ export const H3 = styled.h3`
   justify-content: center;
   padding: 7px;
   font-size: 25px;
-  // text-decoration: underline black; 
   
 `
 export const Pokebola = styled.img `
@@ -108,9 +117,73 @@ export const Pokebola = styled.img `
   align-self: center;
 `
 
-
-export const DivButtonPokedex = styled.div` 
+export const DivContain = styled.div`
+margin: 50px;
 display: flex;
-justify-content: center;
+justify-content: space-evenly;
+flex-direction: column;
 align-items: center;
+
+`
+
+export const DivHome = styled.div` 
+margin-bottom: 20px;
+margin-top: -25px;
+`
+
+export const PGreen = styled.span `
+  color: green;
+`
+export const PRed = styled.span `
+  color: red;
+`
+export const PBlue = styled.span `
+  color: blue;
+`
+
+export const BoxInfoBlue = styled.div `
+  box-shadow: inset 0 0 5px 5px lightblue;
+  background-color: #C8F2D7;
+  border-radius: 2px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  span, p {
+    text-align: center;
+  }
+  @media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    font-size: 12px;
+    width:  320px;
+  }
+`
+export const BoxInfoGreen = styled.div `
+  box-shadow: inset 0 0 5px 5px lightgreen;
+  background-color: #B0E5C6;
+  border-radius: 2px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  span, p {
+    text-align: center;
+  }
+  @media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    font-size: 12px;
+    width:  320px;
+  }
+`
+export const BoxInfoRed = styled.div `
+  box-shadow: inset 0 0 5px 5px lightsalmon;
+  background-color: #F7D7C4;
+  border-radius: 2px;
+  width: 400px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  span, p {
+    text-align: center;
+  }
+  @media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    font-size: 12px;
+    width:  320px;
+  }
 `
